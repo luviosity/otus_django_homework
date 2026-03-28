@@ -1,0 +1,13 @@
+{% extends "store/base.html" %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+<h1>{{ product.name }}</h1>
+<p><strong>Category:</strong> {{ product.category.name }}</p>
+<p><strong>Description:</strong> {{ product.description }}</p>
+<p><strong>Price:</strong> {{ product.price }}</p>
+<p><strong>Active:</strong> {{ product.is_active|yesno:"Yes,No" }}</p>
+<p><strong>Created:</strong> {{ product.created_at }}</p>
+<a href="{% url 'product_edit' product.pk %}">Edit</a>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "store/base.html" %}
+
+{% block title %}Products{% endblock %}
+
+{% block content %}
+<h1>Products</h1>
+{% for product in products %}
+<div style="margin-bottom: 15px; padding: 10px; border: 1px solid #ddd; border-radius: 4px;">
+    <h2><a href="{% url 'product_detail' product.pk %}">{{ product.name }}</a></h2>
+    <p>{{ product.description|truncatewords:20 }}</p>
+    <p><strong>Price:</strong> {{ product.price }}</p>
+</div>
+{% empty %}
+<p>No products yet. <a href="{% url 'product_create' %}">Create one</a>.</p>
+{% endfor %}
+{% endblock %}

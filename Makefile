@@ -1,11 +1,16 @@
 PYTHON  ?= python3
-MANAGE  ?= $(PYTHON) manage.py
+MANAGE   = cd app && $(PYTHON) manage.py
 
 .PHONY: runserver makemigrations migrate
 
 makemigrations:
-    $(MANAGE) makemigrations
+	$(MANAGE) makemigrations
+
 migrate:
-    $(MANAGE) migrate
+	$(MANAGE) migrate
+
 runserver:
-    $(MANAGE) runserver
+	$(MANAGE) runserver
+
+createsuperuser:
+	$(MANAGE) createsuperuser

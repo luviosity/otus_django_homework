@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Store{% endblock %}</title>
+    <style>
+        body { font-family: sans-serif; max-width: 800px; margin: 0 auto; padding: 20px; }
+        nav { margin-bottom: 20px; padding: 10px 0; border-bottom: 1px solid #ccc; }
+        nav a { margin-right: 15px; text-decoration: none; }
+        .messages { list-style: none; padding: 0; }
+        .messages li { padding: 8px; margin-bottom: 5px; background: #d4edda; border-radius: 4px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="{% url 'product_list' %}">Products</a>
+        <a href="{% url 'product_create' %}">Add Product</a>
+    </nav>
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    {% block content %}{% endblock %}
+</body>
+</html>
